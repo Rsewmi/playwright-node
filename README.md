@@ -1,2 +1,2 @@
-# playwrite-node
-Sample project to learn playwrite with nodeJS
+# playwrigte-node
+Sample project to learn Playwright with NodeJS
