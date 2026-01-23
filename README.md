@@ -19,17 +19,21 @@ The goal of this project is to demonstrate how Playwright can be structured for 
 ---
 
 ## Project Structure
+## Project Structure
+
+```text
 .
 ├── src
-│ ├── pages # Page Objects (UI locators and actions)
-│ ├── flows # Business flows / user journeys
-│ ├── data # Test data and user definitions
-│ ├── fixtures # Playwright fixtures and dependency wiring
-│ └── utils # Reusable utilities (authentication, helpers)
-├── tests # Test scenarios
+│   ├── pages        # Page Objects (UI locators and actions)
+│   ├── flows        # Business flows / user journeys
+│   ├── data         # Test data and user definitions
+│   ├── fixtures     # Playwright fixtures and dependency wiring
+│   └── utils        # Reusable utilities (authentication, helpers)
+├── tests            # Test scenarios
 ├── playwright.config.ts
 ├── package.json
 └── .env
+```
 
 ---
 
@@ -69,6 +73,7 @@ Sensitive data such as URLs and credentials are stored in a `.env` file.
 BASE_URL=https://example.com
 STANDARD_USER=standard_user
 STANDARD_PASSWORD=********
+```
 
 - `.env` is ignored from version control
 - Environment variables are loaded once in `playwright.config.ts`
