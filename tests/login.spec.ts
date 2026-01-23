@@ -1,5 +1,6 @@
 import { LoginFlow } from "../src/flows/login.flow";
 import { LoginPage } from "../src/pages/login.page";
+import {users}  from '../src/data/user.data';
 import { test, expect } from "@playwright/test";
 
 test.describe("Login Tests", () => {
@@ -12,12 +13,12 @@ test.describe("Login Tests", () => {
   });
 
   test("Valid Login Test", async ({ page }) => {
-    await loginFlow.loginWithValidUserCredentials("standard_user", "secret_sauce");
+    await loginFlow.loginWithValidUserCredentials(users.standard.username, users.standard.password);
     await expect(page).toHaveURL(/.*inventory.html/);
   });
 
   test("Invalid Login Test", async ({ page }) => {
-    const errorMessage = await loginFlow.loginWithInvalidUserCredentials("invalid_user", "wrong_password");
+    const errorMessage = await loginFlow.loginWithInvalidUserCredentials(users.invalid.username, users.invalid.password);
     expect(errorMessage).toContain("Username and password do not match any user in this service");
   });
 
