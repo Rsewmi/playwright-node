@@ -1,18 +1,20 @@
 import {Page, Locator} from '@playwright/test';
-import {BasePage} from './base.page';
 
-export class LoginPage extends BasePage {
+export class LoginPage {
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly errorMessage: Locator;
 
-  constructor(page: Page) {
-    super(page);
-    this.usernameInput = page.locator('data-test="username"');
-    this.passwordInput = page.locator('data-test="password"');
-    this.loginButton = page.locator('data-test="login-button"');
-    this.errorMessage = page.locator('data-test="error"');
+  constructor(private readonly page: Page) {
+    this.usernameInput = page.locator('[data-test="username"]');
+    this.passwordInput = page.locator('[data-test="password"]');
+    this.loginButton = page.locator('[data-test="login-button"]');
+    this.errorMessage = page.locator('[data-test="error"]');
+  }
+
+  async navigateToLoginPage() {
+    await this.page.goto('/', {waitUntil: 'networkidle'});
   }
 
   async enterUserName(username: string) {
